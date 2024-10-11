@@ -67,47 +67,52 @@ const Drawer = () => {
 
   return (
     <div className="relative">
-      <div className="w-screen h-screen">
+      <div className="w-screen h-screen relative">
         <Image
           src={Main_bg}
           alt="Background Image"
-          className="w-screen h-screen object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
       {!isOpen && (
         <button
-          className="bg-amber-400 text-white w-full max-w-[1250px] h-12 rounded-t-2xl flex mx-36 absolute bottom-1"
+          className="bg-amber-400 text-white w-full max-w-[1250px] h-12 rounded-t-2xl flex mx-auto absolute bottom-1 left-1/2 transform -translate-x-1/2"
           onClick={toggleDrawer}
         >
-          <div className="absolute bottom-0 w-full flex justify-center p-4">
-            <div className="p-1 w-28 rounded-full bg-white"></div>
+          <div className="absolute bottom-0 w-full flex justify-center p-2 md:p-4">
+            <div className="p-1 w-24 md:w-28 rounded-full bg-white"></div>
           </div>
         </button>
       )}
 
       <div className="main">
         <div
-          className={`drawer-content mx-28 bg-white fixed bottom-0 overflow-auto scrollbar-hide w-[85%] h-[600px] transition-transform duration-300 ease-in-out rounded-t-3xl ${isOpen ? "translate-y-0" : "translate-y-full"
-            }`}
+          className={`drawer-content bg-white fixed bottom-0 left-1/2 w-[85%] max-w-[1250px] h-[600px] transition-transform duration-300 ease-in-out rounded-t-3xl overflow-auto scrollbar-hide ${
+            isOpen ? "translate-y-0" : "translate-y-full"
+          } transform -translate-x-1/2 mx-auto`}
         >
           <div className="">
             <div className="relative">
               <div className="cpycon_1 origin-center rotate-0 z-20 h-[400px] bg-amber-400 absolute inset-0"></div>
               <div className="cpycon_1 origin-center rotate-12 z-10 h-[900px] w-[2500px] bg-amber-400 absolute inset-0"></div>
-              <div className="container_1 flex z-20 relative">
-                <div className="conleft w-[58%] mt-32">
-                  <Image src={exited} alt="exited" className="" />
+              <div className="container_1 flex flex-col md:flex-row z-20 relative">
+                <div className="conleft w-full md:w-[58%] mt-16 md:mt-32">
+                  <Image src={exited} alt="exited" className="w-full h-auto" />
                 </div>
-                <div className="conrig w-[42%] mt-24">
+                <div className="conrig w-full md:w-[42%] mt-16 md:mt-24">
                   <div className="right_up">
-                    <h1 className="innerup text-orange-600 text-6xl font-extrabold text-right pr-7 my-5">
+                    <h1 className="innerup text-orange-600 text-4xl md:text-6xl font-extrabold text-right pr-5 my-5">
                       History of
                     </h1>
-                    <div className="innerdown my-8">
-                      <Image src={history} alt="exited" className="" />
+                    <div className="innerdown my-6">
+                      <Image
+                        src={history}
+                        alt="history"
+                        className="w-full h-auto"
+                      />
                     </div>
                   </div>
-                  <div className="right_down text-3xl text-right mr-7">
+                  <div className="right_down text-xl md:text-3xl text-right mr-5 font-semibold">
                     The Central Asia Shepherd Dog, also known as Alabay, has
                     been a guardian of livestock and property for centuries.
                     Originating from Central Asia, these dogs are renowned for
@@ -118,7 +123,7 @@ const Drawer = () => {
             </div>
 
             <div className="container_2 bg-white py-10">
-              <div className="imagetype list-none flex justify-center gap-7 text-extrabold text-3xl tracking-wide">
+              <div className="imagetype list-none flex justify-center gap-7 font-extrabold text-3xl tracking-wide mb-6">
                 <li>ALL</li>
                 <li className="text-amber-600">PHOTOS</li>
                 <li>VIDEOS</li>
@@ -136,94 +141,124 @@ const Drawer = () => {
                         key={index}
                         className="md:basis-1/2 lg:basis-1/3"
                       >
-                        <div className="p-1">
+                        <div className="p-2">
                           <Image
                             src={Alabayguard}
                             alt="exited"
-                            className="rounded-xl"
+                            className="rounded-xl w-full h-auto"
                           />
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
+                  <CarouselPrevious className="h-12 w-12" />
+                  <CarouselNext className="h-12 w-12" />
                 </Carousel>
               </div>
             </div>
 
             <div className="relative">
+              {/* Background Layer 1 */}
               <div className="cpycon_1 origin-bottom -rotate-12 z-10 h-[800px] w-[2500px] bg-amber-400 absolute inset-0 mt-[450px]"></div>
+
+              {/* Container for Project Vision */}
               <div className="container_3 flex flex-col justify-center items-center z-20 relative">
                 <Image
                   src={project_vision}
                   alt="exited"
-                  className="w-[90%] rounded-xl"
+                  className="w-[90%] md:w-[70%] rounded-xl"
                 />
-                <div className="group_dogs h-screen">
+                <div className="group_dogs w-full h-auto mt-10">
                   <Image
                     src={group_dogs}
                     alt="exited"
-                    className="rounded-xl w-full h-max"
+                    className="rounded-xl w-full h-auto"
                   />
                 </div>
               </div>
 
-              <div className="cpycon_1 origin-top-left rotate-12 z-10 h-[800px] w-[2500px] bg-amber-400 absolute inset-0 mt-[800px]"></div>
-              <div className="container_4 text-4xl py-24 text-center px-16 z-20 relative">
+              {/* Background Layer 2 */}
+              <div className="cpycon_1 origin-top-left rotate-12 z-10 h-[700px] w-[2500px] bg-amber-400 absolute inset-0 mt-[800px]"></div>
+
+              {/* Mission Statement */}
+              <div className="container_4 text-4xl py-24 text-center px-4 md:px-16 z-20 relative font-semibold">
                 <p>
                   Our mission is to honor the heritage of the Alabay by creating
-                  a vibrant, loyal and powerful community. Just as Alabay
+                  a vibrant, loyal, and powerful community. Just as Alabay
                   protects its flock, we aim to build a pack that stands strong
                   together.
                 </p>
               </div>
 
-              <div className="container_5 flex mb-20 z-20 relative">
-                <div className="left w-[50%]">
-                  <div className="leftupper w-[600px] mt-10">
+              {/* Roadmap Section */}
+              <div className="container_5 flex flex-col md:flex-row mb-20 z-20 relative">
+                <div className="left w-full md:w-[50%]">
+                  <div className="leftupper w-full md:w-[600px] mt-10">
                     <Image
                       src={roadmap}
                       alt="exited"
-                      className="pl-5 h-[180px]"
+                      className="pl-5 h-[180px] w-full"
                     />
                   </div>
-                  <div className="leftdown text-3xl flex flex-col justify-center items-center h-[400px] pl-12 pr-20 mt-32">
+                  <div className="leftdown text-3xl flex flex-col justify-center font-semibold items-center h-auto pl-12 pr-4 md:pr-20 mt-32">
                     <p className="py-10">
-                      Our Journey is just beginning. Explore our roadmap to see
-                      the exiting milestones and future plans we have in store
+                      Our journey is just beginning. Explore our roadmap to see
+                      the exciting milestones and future plans we have in store.
                     </p>
                     <p className="text-orange-600">
                       Join us as we grow and achieve new heights.
                     </p>
                   </div>
                 </div>
-                <div className="right mt-28">
-                  <Image src={roadmap_dog} alt="exited" className="" />
+                <div className="right w-full md:w-[50%] mt-10 md:mt-28">
+                  <Image src={roadmap_dog} alt="exited" className="w-full" />
                 </div>
               </div>
             </div>
 
-            <div className="container_6 bg-white flex pt-32 pb-20 text-white text-center px-12 gap-5">
-              <div className="domain_dogs bg-yellow-300 p-5 rounded-tl-3xl rounded-bl-3xl">
+            <div className="container_6 bg-white flex flex-col md:flex-row pt-32 pb-20 text-white font-bold text-center px-4 md:px-12 gap-5">
+              {/* Community Building Card */}
+              <div className="domain_dogs bg-yellow-300 p-5 rounded-tl-3xl rounded-bl-3xl flex flex-col items-center">
                 <h1 className="text-4xl">Community Building</h1>
                 <p className="text-xl">and Initial Launch</p>
-                <Image src={community_building} alt="exited" className="" />
+                <Image
+                  src={community_building}
+                  alt="Community Building"
+                  className="w-full h-auto"
+                />
               </div>
-              <div className="domain_dogs bg-teal-200 p-5">
+
+              {/* Merchandise Card */}
+              <div className="domain_dogs bg-teal-200 p-5 flex flex-col items-center">
                 <h1 className="text-4xl">Merchandise</h1>
                 <p className="text-xl">Store Launch</p>
-                <Image src={merchandise} alt="exited" className="" />
+                <Image
+                  src={merchandise}
+                  alt="Merchandise"
+                  className="w-full h-auto"
+                />
               </div>
-              <div className="domain_dogs bg-fuchsia-400 p-2">
+
+              {/* Community Events Card */}
+              <div className="domain_dogs bg-fuchsia-400 p-5 flex flex-col items-center">
                 <h1 className="text-4xl">Community Events</h1>
                 <p className="text-xl">and Contests</p>
-                <Image src={contest} alt="exited" className="" />
+                <Image
+                  src={contest}
+                  alt="Community Events"
+                  className="w-full h-auto"
+                />
               </div>
-              <div className="domain_dogs bg-amber-900 p-5 rounded-tr-3xl rounded-br-3xl">
+
+              {/* Expansion and New Features Card */}
+              <div className="domain_dogs bg-amber-900 p-5 rounded-tr-3xl rounded-br-3xl flex flex-col items-center">
                 <h1 className="text-4xl">Expansion and New</h1>
-                <p className="text-xl">features</p>
-                <Image src={features} alt="exited" className="" />
+                <p className="text-xl">Features</p>
+                <Image
+                  src={features}
+                  alt="Expansion and New Features"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
 
@@ -231,63 +266,98 @@ const Drawer = () => {
               <div className="cpycon_1 origin-bottom -rotate-12 z-10 h-[800px] w-[2500px] bg-amber-400 absolute inset-0"></div>
               <div className="cpycon_1 origin-top-left rotate-12 z-10 h-[800px] w-[2500px] bg-amber-400 absolute inset-0 mt-[300px]"></div>
               <div className="container_7 z-20 relative pt-56">
-                <div className="Tokenomics h-[200px]">
+                {/* Tokenomics Section */}
+                <div className="Tokenomics flex flex-col md:flex-row items-center mt-10">
+                  {/* Tokenomics Image */}
                   <Image
                     src={tokenomics}
-                    alt="tokenomics"
-                    className="h-full w-[60%] pl-16 mt-10"
+                    alt="Tokenomics"
+                    className="h-auto w-full md:w-[60%] pl-4 md:pl-16"
                   />
                 </div>
-                <div className="below_tokenomics flex">
-                  <div className="leftcon flex flex-col gap-5 text-white mt-32 pl-20">
-                    <div className="btn bg-neutral-700 px-7 py-5 rounded-3xl">
-                      <p className="text-3xl">LIQUIDITY</p>
-                      <h1 className="text-5xl font-extrabold text-yellow-200">
+
+                {/* Below Tokenomics Section */}
+                <div className="below_tokenomics flex flex-col md:flex-row justify-between items-center mt-10">
+                  {/* Left Content */}
+                  <div className="leftcon flex flex-col gap-5 text-white mt-10 pl-4 md:pl-20">
+                    {/* Liquidity Button */}
+                    <div className="btn bg-neutral-700 px-6 py-4 rounded-3xl transition-transform transform hover:scale-105">
+                      <p className="text-2xl md:text-3xl">LIQUIDITY</p>
+                      <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-200">
                         LOCKED
                       </h1>
                     </div>
-                    <div className="btn bg-neutral-700 px-7 py-5 rounded-3xl">
-                      <p className="text-3xl">CONTRACT</p>
-                      <h1 className="text-5xl font-extrabold text-yellow-200">
+
+                    {/* Contract Button */}
+                    <div className="btn bg-neutral-700 px-6 py-4 rounded-3xl transition-transform transform hover:scale-105">
+                      <p className="text-2xl md:text-3xl">CONTRACT</p>
+                      <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-200">
                         RENOUNCED
                       </h1>
                     </div>
-                    <div className="btn bg-neutral-700 px-7 py-5 rounded-3xl">
-                      <p className="text-3xl">TAXES</p>
-                      <h1 className="text-5xl font-extrabold text-yellow-200">
+
+                    {/* Taxes Button */}
+                    <div className="btn bg-neutral-700 px-6 py-4 rounded-3xl transition-transform transform hover:scale-105">
+                      <p className="text-2xl md:text-3xl">TAXES</p>
+                      <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-200">
                         0%
                       </h1>
                     </div>
                   </div>
-                  <div className="rightcon">
-                    <Image src={moneydog} alt="moneydog" className="" />
+
+                  <div className="rightcon w-full flex justify-center mt-10 md:mt-0">
+                    <Image
+                      src={moneydog}
+                      alt="Money Dog"
+                      className="max-w-[full] w-full h-auto"
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="container_8 bg-white py-32">
-              <div className="heading flex justify-center mx-56">
-                <Image src={merchandise_text} alt="moneydog" className="" />
+              <div className="heading flex justify-center mx-4 sm:mx-20 lg:mx-56">
+                <Image
+                  src={merchandise_text}
+                  alt="moneydog"
+                  className="w-full max-w-xs sm:max-w-md lg:max-w-5xl"
+                />
               </div>
               <div className="merchimage">
-                <Carousel className="mx-32 my-10 mb-32">
+                <Carousel className="mx-4 sm:mx-20 lg:mx-32 my-10 mb-32">
                   <CarouselContent>
                     <CarouselItem>
-                      <Image src={black_hoddie} alt="" className="" />
+                      <Image
+                        src={black_hoddie}
+                        alt=""
+                        className="w-auto h-auto max-w-xs sm:max-w-sm lg:max-w-5xl"
+                      />
                     </CarouselItem>
                     <CarouselItem>
-                      <Image src={blue_cap} alt="" className="" />
+                      <Image
+                        src={blue_cap}
+                        alt=""
+                        className="w-auto h-auto max-w-xs sm:max-w-sm lg:max-w-5xl"
+                      />
                     </CarouselItem>
                     <CarouselItem>
-                      <Image src={pink_tshirt} alt="" className="" />
+                      <Image
+                        src={pink_tshirt}
+                        alt=""
+                        className="w-auto h-auto max-w-xs sm:max-w-sm lg:max-w-5xl"
+                      />
                     </CarouselItem>
                     <CarouselItem>
-                      <Image src={yellow_tshirt} alt="" className="" />
+                      <Image
+                        src={yellow_tshirt}
+                        alt=""
+                        className="w-auto h-auto max-w-xs sm:max-w-sm lg:max-w-5xl"
+                      />
                     </CarouselItem>
                   </CarouselContent>
-                  <CarouselPrevious className="ml-16 h-14 w-14" />
-                  <CarouselNext className="mr-16 h-14 w-14" />
+                  <CarouselPrevious className="ml-4 sm:ml-8 lg:ml-16 h-14 w-14" />
+                  <CarouselNext className="mr-4 sm:mr-8 lg:mr-16 h-14 w-14" />
                 </Carousel>
               </div>
             </div>
@@ -295,26 +365,31 @@ const Drawer = () => {
             <div className="relative">
               <div className="container_9 py-32 z-20 relative">
                 <div className="heading_games flex flex-col items-center justify-center">
-                  <Image src={games} alt="" className="h-[180px] w-[45%]" />
-                  <h1 className="text-4xl font-extrabold">
+                  <Image
+                    src={games}
+                    alt=""
+                    className="h-[180px] w-[50%] max-w-[200px] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[500px]"
+                  />
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center">
                     Stay tuned for upcoming games!
                   </h1>
                 </div>
+
                 <div className="bottom_image">
-                  <Carousel className="m-16 border-8 rounded-3xl border-white">
+                  <Carousel className="m-4 sm:m-16 border-8 rounded-3xl border-white">
                     <CarouselContent>
                       <CarouselItem className="relative">
                         <Image
                           src={Alabayguard}
                           alt=""
-                          className="rounded-2xl"
+                          className="rounded-2xl w-full h-auto"
                         />
                         <Link href="/discover_1">
-                          <button className="btn_discover absolute bottom-20 left-1/2 transform -translate-x-1/2 text-4xl flex bg-purple-600 text-white items-center py-2 px-10 gap-4 rounded-3xl">
+                          <button className="btn_discover absolute bottom-20 left-1/2 transform -translate-x-1/2 text-lg sm:text-2xl md:text-3xl flex bg-purple-600 text-white items-center py-1 px-4 sm:px-6 md:px-8 gap-1 sm:gap-2 rounded-3xl">
                             Discover
                             <FontAwesomeIcon
                               icon={faArrowRight}
-                              className="h-8 w-8"
+                              className="h-4 sm:h-5 md:h-6 w-4 sm:w-5 md:w-6"
                             />
                           </button>
                         </Link>
@@ -323,44 +398,59 @@ const Drawer = () => {
                         <Image
                           src={Alabayheritage}
                           alt=""
-                          className="rounded-3xl"
+                          className="rounded-3xl w-full h-auto"
                         />
                         <Link href="/discover_2">
-                          <button className="btn_discover absolute bottom-20 left-1/2 transform -translate-x-1/2 text-4xl flex bg-green-600 text-white items-center py-2 px-10 gap-4 rounded-3xl">
+                          <button className="btn_discover absolute bottom-20 left-1/2 transform -translate-x-1/2 text-lg sm:text-2xl md:text-3xl flex bg-green-600 text-white items-center py-1 px-4 sm:px-6 md:px-8 gap-1 sm:gap-2 rounded-3xl">
                             Discover
                             <FontAwesomeIcon
                               icon={faArrowRight}
-                              className="h-8 w-8"
+                              className="h-4 sm:h-5 md:h-6 w-4 sm:w-5 md:w-6"
                             />
                           </button>
                         </Link>
                       </CarouselItem>
                     </CarouselContent>
-                    <CarouselPrevious className="ml-16 h-14 w-14" />
-                    <CarouselNext className="mr-16 h-14 w-14" />
+                    <CarouselPrevious className="ml-4 sm:ml-16 h-14 w-14" />
+                    <CarouselNext className="mr-4 sm:mr-16 h-14 w-14" />
                   </Carousel>
                 </div>
               </div>
-              <div className="cpycon_1 origin-bottom -rotate-12 z-10 h-[800px] w-[2500px] bg-amber-400 absolute inset-0 mt-[-100px]"></div>
-              <div className="cpycon_1 origin-top-left rotate-12 z-10 h-[800px] w-[2500px] bg-amber-400 absolute inset-0 mt-[250px]"></div>
+              <div className="cpycon_1 origin-bottom -rotate-12 z-10 h-[700px] w-[2500px] bg-amber-400 absolute inset-0 mt-[-100px]"></div>
+              <div className="cpycon_1 origin-top-left rotate-12 z-10 h-[780px] w-[2500px] bg-amber-400 absolute inset-0 mt-[250px]"></div>
             </div>
 
-            <div className="container_10 bg-white py-32 px-10">
+            <div className="container_10 bg-white py-32 px-10 z-20 relative mt-[100px]">
               <div className="games_prev flex gap-2 text-4xl font-extrabold">
                 <h1 className="text-amber-400">GAME</h1>
                 <h1>PREVIEWS</h1>
               </div>
-              <div className="game_prev_images flex gap-5 my-5 justify-centetr items-center">
-                <div className="images_games">
-                  <Image src={game_1} alt="" className="rounded-3xl" />
+              <div className="game_prev_images flex flex-wrap gap-5 my-5 justify-centetr items-center">
+                <div className="game_prev_images flex flex-wrap sm:flex-nowrap gap-4 my-5 justify-center items-center w-[90%]">
+                  <div className="images_games w-full sm:w-1/2 lg:w-1/3">
+                    <Image
+                      src={game_1}
+                      alt=""
+                      className="rounded-3xl w-full h-auto"
+                    />
+                  </div>
+                  <div className="images_games w-full sm:w-1/2 lg:w-1/3">
+                    <Image
+                      src={game_2}
+                      alt=""
+                      className="rounded-3xl w-full h-auto"
+                    />
+                  </div>
+                  <div className="images_games w-full sm:w-1/2 lg:w-1/3">
+                    <Image
+                      src={game_3}
+                      alt=""
+                      className="rounded-3xl w-full h-auto"
+                    />
+                  </div>
                 </div>
-                <div className="images_games">
-                  <Image src={game_2} alt="" className="rounded-3xl" />
-                </div>
-                <div className="images_games">
-                  <Image src={game_3} alt="" className="rounded-3xl" />
-                </div>
-                <div className="arrow">
+
+                <div className="arrow w-[5%]">
                   <FontAwesomeIcon
                     icon={faArrowRight}
                     className="h-24 w-10 bg-gray-700 text-white px-5 rounded-3xl cursor-pointer"
